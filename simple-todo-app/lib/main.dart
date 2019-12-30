@@ -15,7 +15,7 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  final List<String> _todoList = [];
+  final List<String> _todoList = <String>[];
   final TextEditingController _textFieldController = TextEditingController();
 
   @override
@@ -48,7 +48,7 @@ class _TodoListState extends State<TodoList> {
   Future<AlertDialog> _displayDialog(BuildContext context) async {
     return showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return AlertDialog(
             title: const Text('Add a task to your list'),
             content: TextField(
