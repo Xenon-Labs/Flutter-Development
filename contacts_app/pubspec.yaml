@@ -29,6 +29,8 @@ dev_dependencies:
     sdk: flutter
   permission_handler: ^4.0.0
   contacts_service: ^0.3.10
+  flutter_sms: ^2.0.0
+  url_launcher: ^5.4.2
 
 
 # For information on the generic Dart part of this file, see the
