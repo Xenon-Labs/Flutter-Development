@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'helperFunctions.dart';
 
-class SmsButton extends StatelessWidget {
-  const SmsButton({Key key, @required this.phoneNumbers}) : super(key: key);
+class PhoneButton extends StatelessWidget {
+  const PhoneButton({Key key, @required this.phoneNumbers}) : super(key: key);
 
   final Iterable phoneNumbers;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.message),
+      icon: Icon(Icons.phone),
       onPressed: () {
         String number = HelperFunctions.hasValidPhoneNumber(phoneNumbers);
         if (number != null) {
-          HelperFunctions.messagingDialog(context, number);
+          HelperFunctions.callNumber(context, number);
         }
       },
     );

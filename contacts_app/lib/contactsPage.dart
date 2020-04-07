@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'smsButton.dart';
+import 'phoneButton.dart';
 
 class ContactsPage extends StatefulWidget {
   @override
@@ -52,7 +53,13 @@ class _ContactsPageState extends State<ContactsPage> {
                   title: Text(contact.displayName ?? ''),
                   //This can be further expanded to showing contacts detail
                   // onPressed().
-                  trailing: SmsButton(phoneNumbers: contact.phones),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      PhoneButton(phoneNumbers: contact.phones),
+                      SmsButton(phoneNumbers: contact.phones)
+                    ],
+                  ),
                 );
               },
             )

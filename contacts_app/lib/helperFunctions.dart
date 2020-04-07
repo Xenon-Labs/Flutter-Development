@@ -15,11 +15,26 @@ class HelperFunctions {
     print(_result);
   }
 
-  static void callNumber(BuildContext context, String number) {
-    launch('tell://' + number).catchError((dynamic onError) {
+  static Future<void> callNumber(BuildContext context, String number) async {
+    bool _result =
+        await launch('tell://' + number).catchError((dynamic onError) {
       print(onError);
       standardAlertDialog(context, "Error", onError.toString());
     });
+    if (_result == false) {
+      standardAlertDialog(context, "Error", "Can not call on this device");
+    }
+  }
+
+  static String hasValidPhoneNumber(Iterable phoneNumbers) {
+    if (phoneNumbers != null && phoneNumbers.toList().isNotEmpty) {
+      List phoneNumbersList = phoneNumbers.toList();
+      // This messages first available number
+      // Can change this to display all numbers first and let the user
+      // choose which one to send sms to.
+      return phoneNumbersList[0].value;
+    }
+    return null;
   }
 
   // Used for error messages
