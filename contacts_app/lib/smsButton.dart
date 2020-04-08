@@ -10,12 +10,18 @@ class SmsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.message),
-      onPressed: () {
-        String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
-        if (number != null) {
-          HelperFunctions.messagingDialog(context, number);
-        }
-      },
+      onPressed: onSmsButtonPressed(context),
     );
+  }
+
+  Function onSmsButtonPressed(BuildContext context) {
+    String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
+    if (number != null) {
+      return () {
+        HelperFunctions.messagingDialog(context, number);
+      };
+    } else {
+      return null;
+    }
   }
 }

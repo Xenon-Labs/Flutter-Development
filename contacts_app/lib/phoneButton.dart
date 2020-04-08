@@ -10,12 +10,18 @@ class PhoneButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(Icons.phone),
-      onPressed: () {
-        String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
-        if (number != null) {
-          HelperFunctions.callNumber(context, number);
-        }
-      },
+      onPressed: onPhoneButtonPressed(context),
     );
+  }
+
+  Function onPhoneButtonPressed(BuildContext context) {
+    String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
+    if (number != null) {
+      return () {
+        HelperFunctions.callNumber(context, number);
+      };
+    } else {
+      return null;
+    }
   }
 }

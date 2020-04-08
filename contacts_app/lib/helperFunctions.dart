@@ -16,8 +16,9 @@ class HelperFunctions {
   }
 
   static Future<void> callNumber(BuildContext context, String number) async {
+    number = number.replaceAll(RegExp(r"[^\w]"), "");
     bool _result =
-        await launch('tel://' + number).catchError((dynamic onError) {
+        await launch('tel:' + number).catchError((dynamic onError) {
       print(onError);
       standardAlertDialog(context, "Error", onError.toString());
     });
