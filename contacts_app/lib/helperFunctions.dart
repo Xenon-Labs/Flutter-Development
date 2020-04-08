@@ -22,7 +22,7 @@ class HelperFunctions {
       standardAlertDialog(context, "Error", onError.toString());
     });
     if (_result == false) {
-      standardAlertDialog(context, "Error", "Can not call on this device");
+      standardAlertDialog(context, "Error", "Unable to call number");
     }
   }
 
