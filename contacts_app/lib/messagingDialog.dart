@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class MessagingDialog extends StatefulWidget {
-  MessagingDialog({Key key, this.confirmCallback, this.recipient})
+  MessagingDialog({Key key, this.messageCallback, this.recipient})
       : super(key: key);
 
-  final Function confirmCallback;
+  final Function messageCallback;
   final String recipient;
 
   @override
@@ -35,7 +35,7 @@ class _MessagingDialogState extends State<MessagingDialog> {
         FlatButton(
           child: Text("OK"),
           onPressed: () {
-            widget.confirmCallback(context, controller.text, widget.recipient);
+            widget.messageCallback(context, controller.text, widget.recipient);
             Navigator.of(context).pop();
           },
         )

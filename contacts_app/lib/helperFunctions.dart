@@ -17,7 +17,7 @@ class HelperFunctions {
 
   static Future<void> callNumber(BuildContext context, String number) async {
     bool _result =
-        await launch('tell://' + number).catchError((dynamic onError) {
+        await launch('tel://' + number).catchError((dynamic onError) {
       print(onError);
       standardAlertDialog(context, "Error", onError.toString());
     });
@@ -26,12 +26,11 @@ class HelperFunctions {
     }
   }
 
-  static String hasValidPhoneNumber(Iterable phoneNumbers) {
+  static String getValidPhoneNumber(Iterable phoneNumbers) {
     if (phoneNumbers != null && phoneNumbers.toList().isNotEmpty) {
       List phoneNumbersList = phoneNumbers.toList();
-      // This messages first available number
-      // Can change this to display all numbers first and let the user
-      // choose which one to send sms to.
+      // This takes first available number. Can change this to display all
+      // numbers first and let the user choose which one use.
       return phoneNumbersList[0].value;
     }
     return null;
@@ -63,7 +62,7 @@ class HelperFunctions {
         context: context,
         builder: (BuildContext context) {
           return MessagingDialog(
-              confirmCallback: initiateMessage, recipient: recipient);
+              messageCallback: initiateMessage, recipient: recipient);
         });
   }
 }

@@ -11,7 +11,7 @@ class PhoneButton extends StatelessWidget {
     return IconButton(
       icon: Icon(Icons.phone),
       onPressed: () {
-        String number = HelperFunctions.hasValidPhoneNumber(phoneNumbers);
+        String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
         if (number != null) {
           HelperFunctions.callNumber(context, number);
         }

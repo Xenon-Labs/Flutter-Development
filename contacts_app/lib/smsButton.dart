@@ -11,7 +11,7 @@ class SmsButton extends StatelessWidget {
     return IconButton(
       icon: Icon(Icons.message),
       onPressed: () {
-        String number = HelperFunctions.hasValidPhoneNumber(phoneNumbers);
+        String number = HelperFunctions.getValidPhoneNumber(phoneNumbers);
         if (number != null) {
           HelperFunctions.messagingDialog(context, number);
         }
