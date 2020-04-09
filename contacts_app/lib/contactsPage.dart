@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
-import 'smsButton.dart';
-import 'phoneButton.dart';
+import 'package:contacts_app/smsButton.dart';
+import 'package:contacts_app/phoneButton.dart';
 
 class ContactsPage extends StatefulWidget {
   @override

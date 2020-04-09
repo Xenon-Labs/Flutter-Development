@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'messagingDialog.dart';
+import 'package:contacts_app/messagingDialog.dart';
 
 class HelperFunctions {
   static Future<void> initiateMessage(
@@ -9,7 +9,6 @@ class HelperFunctions {
     final String _result =
         await sendSMS(message: message, recipients: <String>[recipient])
             .catchError((dynamic onError) {
-      print(onError);
       standardAlertDialog(context, "Error", onError.toString());
     });
     print(_result);
@@ -19,7 +18,6 @@ class HelperFunctions {
     number = number.replaceAll(RegExp(r"[^\w]"), "");
     bool _result =
         await launch('tel:' + number).catchError((dynamic onError) {
-      print(onError);
       standardAlertDialog(context, "Error", onError.toString());
     });
     if (_result == false) {

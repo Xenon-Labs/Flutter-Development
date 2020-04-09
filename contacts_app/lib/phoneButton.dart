@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'helperFunctions.dart';
+import 'package:contacts_app/helperFunctions.dart';
 
 class PhoneButton extends StatelessWidget {
   const PhoneButton({Key key, @required this.phoneNumbers}) : super(key: key);
