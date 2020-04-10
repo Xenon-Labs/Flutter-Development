@@ -29,6 +29,10 @@ class _TodoListState extends State<TodoList> {
             child: new Icon(Icons.add)));
   }
 
+  _getFirestoreValues() {
+    // TODO: Stream Database Values
+  }
+
   // Display Add Task Dialog
   _displayDialog(BuildContext context) async {
     return showDialog(
@@ -41,7 +45,15 @@ class _TodoListState extends State<TodoList> {
         });
   }
 
-  _getFirestoreValues() {
-    // TODO: Stream Database Values
+  void showInSnackBar(String value, String actionText) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(SnackBar(
+      content: Text(value),
+      duration: Duration(seconds: 2),
+      action: SnackBarAction(
+        label: actionText,
+        onPressed: scaffold.hideCurrentSnackBar,
+      ),
+    ));
   }
 }

@@ -45,9 +45,9 @@ class EditDialogState extends State<EditDialog> {
   }
 
   @override
-  void dispose() {
-    textFieldController.dispose();
-    super.dispose();
+  void initState() {
+    textFieldController.addListener(_updateDialogTextField);
+    super.initState();
   }
 
   Widget getDialogContent() {
@@ -62,27 +62,16 @@ class EditDialogState extends State<EditDialog> {
     );
   }
 
-  @override
-  void initState() {
-    textFieldController.addListener(_updateDialogTextField);
-    super.initState();
-  }
-
-  void showInSnackBar(String value) {
-    final scaffold = Scaffold.of(context);
-    scaffold.showSnackBar(SnackBar(
-      content: Text(value),
-      duration: Duration(seconds: 2),
-      action: SnackBarAction(
-        label: 'DISMISS',
-        onPressed: scaffold.hideCurrentSnackBar,
-      ),
-    ));
-  }
 
   void _updateDialogTextField() {
     setState(() {
       _validateDialog = textFieldController.text.isNotEmpty;
     });
+  }
+
+  @override
+  void dispose() {
+    textFieldController.dispose();
+    super.dispose();
   }
 }
