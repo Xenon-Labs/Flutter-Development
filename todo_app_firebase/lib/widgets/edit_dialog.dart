@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+typedef VoidCallback = Function(String value);
+
 class EditDialog extends StatefulWidget {
   const EditDialog(
       {@required this.title,
       @required this.positiveAction,
-      @required this.negativeAction});
+      @required this.negativeAction,
+      @required this.submit});
   final String title, positiveAction, negativeAction;
+  final VoidCallback submit;
 
   EditDialogState createState() => EditDialogState();
 }
@@ -27,7 +31,8 @@ class EditDialogState extends State<EditDialog> {
               )),
           onPressed: () {
             if (_validateDialog) {
-              // TODO: Update Database
+              widget.submit(textFieldController.text.toString());
+              Navigator.of(context).pop();
             }
           },
         ),
@@ -61,7 +66,6 @@ class EditDialogState extends State<EditDialog> {
       ),
     );
   }
-
 
   void _updateDialogTextField() {
     setState(() {
