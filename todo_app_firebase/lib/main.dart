@@ -9,7 +9,10 @@ void main() => runApp(new App());
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(title: 'To-Do List', home: new TodoList());
+    return new MaterialApp(
+        title: 'To-Do List',
+        home: new TodoList(),
+        debugShowCheckedModeBanner: false);
   }
 }
 
