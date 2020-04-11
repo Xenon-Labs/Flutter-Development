@@ -17,7 +17,7 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    updateText.text = this.content;
+    updateText.text = content;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
@@ -33,18 +33,18 @@ class Task extends StatelessWidget {
           Row(
             children: <Widget>[
               IconButton(
-                  icon: new Icon(Icons.cloud_upload,
+                  icon: Icon(Icons.cloud_upload,
                       color: Colors.blueAccent, size: 20.0),
                   alignment: Alignment.center,
-                  padding: new EdgeInsets.all(0.0),
+                  padding: EdgeInsets.all(0.0),
                   onPressed: () =>
-                      this.update(updateText.text.toString(), this.id)),
+                      update(updateText.text.toString(), id)),
               IconButton(
-                  icon: new Icon(Icons.delete,
+                  icon: Icon(Icons.delete,
                       color: Colors.redAccent, size: 20.0),
                   alignment: Alignment.center,
-                  padding: new EdgeInsets.all(0.0),
-                  onPressed: () => this.delete(this.id))
+                  padding: EdgeInsets.all(0.0),
+                  onPressed: () => delete(id))
             ],
           )
         ],

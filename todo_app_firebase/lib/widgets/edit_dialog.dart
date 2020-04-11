@@ -19,6 +19,18 @@ class EditDialogState extends State<EditDialog> {
   bool _validateDialog = true;
 
   @override
+  void initState() {
+    textFieldController.addListener(_updateDialogTextField);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textFieldController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(widget.title),
@@ -49,12 +61,6 @@ class EditDialogState extends State<EditDialog> {
     );
   }
 
-  @override
-  void initState() {
-    textFieldController.addListener(_updateDialogTextField);
-    super.initState();
-  }
-
   Widget getDialogContent() {
     return TextField(
       cursorColor: Theme.of(context).accentColor,
@@ -71,11 +77,5 @@ class EditDialogState extends State<EditDialog> {
     setState(() {
       _validateDialog = textFieldController.text.isNotEmpty;
     });
-  }
-
-  @override
-  void dispose() {
-    textFieldController.dispose();
-    super.dispose();
   }
 }
