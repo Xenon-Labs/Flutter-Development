@@ -13,7 +13,7 @@ class Task extends StatelessWidget {
   final String content, id;
   final UpdateCallback update;
   final DeleteCallback delete;
-  TextEditingController updateText = TextEditingController();
+  final TextEditingController updateText = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

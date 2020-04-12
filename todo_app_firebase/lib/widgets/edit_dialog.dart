@@ -15,7 +15,7 @@ class EditDialog extends StatefulWidget {
 }
 
 class EditDialogState extends State<EditDialog> {
-  final TextEditingController textFieldController = new TextEditingController();
+  final TextEditingController textFieldController = TextEditingController();
   bool _validateDialog = true;
 
   @override

@@ -4,33 +4,33 @@ import 'package:todo_app_firebase/widgets/edit_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo_app_firebase/widgets/task.dart';
 
-void main() => runApp(new App());
+void main() => runApp(App());
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
         title: 'To-Do List',
-        home: new TodoList(),
+        home: TodoList(),
         debugShowCheckedModeBanner: false);
   }
 }
 
 class TodoList extends StatefulWidget {
   @override
-  _TodoListState createState() => new _TodoListState();
+  _TodoListState createState() => _TodoListState();
 }
 
 class _TodoListState extends State<TodoList> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(title: new Text('To-Do List')),
+    return Scaffold(
+        appBar: AppBar(title: Text('To-Do List')),
         body: _getTasks(),
-        floatingActionButton: new FloatingActionButton(
+        floatingActionButton: FloatingActionButton(
             onPressed: () => _displayDialog(context),
             tooltip: 'Add Item',
-            child: new Icon(Icons.add)));
+            child: Icon(Icons.add)));
   }
 
   // Display Add Task Dialog
