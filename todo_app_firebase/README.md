@@ -1,6 +1,6 @@
 # Flutter & Firestore CRUD operations
 
-Follow the tutorial here https://medium.com/@yenvanio/flutter-firestore-crud-operations-8a7004b97d71
+Follow the tutorial [here](https://medium.com/@yenvanio/flutter-firestore-crud-operations-8a7004b97d71)
 
 ## Installation
 
