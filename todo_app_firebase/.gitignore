@@ -22,18 +22,16 @@
 
 # Flutter/Dart/Pub related
 **/doc/api/
-**/.dart_tool/
-**/.flutter-plugins
-**/.flutter-plugins-dependencies
-**/.packages
-**/.pub-cache/
-**/.pub/
-**/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
 
 # Web related
 lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-todo_app_firebase/android/app/google-services.json
-todo_app_firebase/ios/Runner/GoogleService-Info.plist
