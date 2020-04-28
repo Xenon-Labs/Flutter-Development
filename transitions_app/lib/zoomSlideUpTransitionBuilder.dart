@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ZoomSlideUpTransitionsBuilder extends ZoomPageTransitionsBuilder {
+class ZoomSlideUpTransitionsBuilder extends PageTransitionsBuilder {
   const ZoomSlideUpTransitionsBuilder();
 
   @override
