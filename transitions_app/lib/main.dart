@@ -4,7 +4,6 @@ import 'package:transitions_app/zoomSlideUpTransitionBuilder.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'dart:math';
 
-
 void main() {
   //Speed of animation has been slowed for demoing purposes
   timeDilation = 3.0;
@@ -18,13 +17,12 @@ class MyApp extends StatelessWidget {
       title: 'Transitions Tutorial',
       theme: ThemeData(
           pageTransitionsTheme: PageTransitionsTheme(builders: {
-            TargetPlatform.iOS: ZoomSlideUpTransitionsBuilder(),
-            TargetPlatform.android: RotationFadeTransitionBuilder(),
+        TargetPlatform.iOS: ZoomSlideUpTransitionsBuilder(),
+        TargetPlatform.android: RotationFadeTransitionBuilder(),
 
-            //Example of using default animations
-            //TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-            //TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
-
+        //Example of using default animations
+        //TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        //TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
       })),
       home: MyHomePage(title: 'Transitions Tutorial'),
     );

@@ -19,9 +19,7 @@ class ZoomSlideUpTransitionsBuilder extends ZoomPageTransitionsBuilder {
 class _ZoomSlideUpTransitionsBuilder extends StatelessWidget {
   _ZoomSlideUpTransitionsBuilder({
     Key key,
-    @required
-        Animation<double>
-            routeAnimation, // The route's linear 0.0 - 1.0 animation.
+    @required Animation<double> routeAnimation,
     @required this.child,
   })  : _scaleAnimation = CurvedAnimation(
           parent: routeAnimation,

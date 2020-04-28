@@ -1,34 +1,34 @@
 import 'package:flutter/material.dart';
 
 class RotationFadeTransitionBuilder extends PageTransitionsBuilder {
-
   const RotationFadeTransitionBuilder();
 
   @override
   Widget buildTransitions<T>(
-      PageRoute<T> route,
-      BuildContext context,
-      Animation<double> animation,
-      Animation<double> secondaryAnimation,
-      Widget child,
-      ) {
-    return _RotationFadeTransitionBuilder(routeAnimation: animation, child: child);
+    PageRoute<T> route,
+    BuildContext context,
+    Animation<double> animation,
+    Animation<double> secondaryAnimation,
+    Widget child,
+  ) {
+    return _RotationFadeTransitionBuilder(
+        routeAnimation: animation, child: child);
   }
 }
-
 
 class _RotationFadeTransitionBuilder extends StatelessWidget {
   _RotationFadeTransitionBuilder({
     Key key,
-    @required Animation<double> routeAnimation, // The route's linear 0.0 - 1.0 animation.
+    @required Animation<double> routeAnimation,
     @required this.child,
-  }) : _turnsAnimation = routeAnimation.drive(_linearToEaseOut),
+  })  : _turnsAnimation = routeAnimation.drive(_linearToEaseOut),
         _opacityAnimation = routeAnimation.drive(_easeInTween),
         super(key: key);
 
-  static final Animatable<double> _linearToEaseOut = CurveTween(curve: Curves.linearToEaseOut);
-  static final Animatable<double> _easeInTween = CurveTween(curve: Curves.easeIn);
-
+  static final Animatable<double> _linearToEaseOut =
+      CurveTween(curve: Curves.linearToEaseOut);
+  static final Animatable<double> _easeInTween =
+      CurveTween(curve: Curves.easeIn);
 
   final Animation<double> _turnsAnimation;
   final Animation<double> _opacityAnimation;
