@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class CustomPageTransitionsBuilder extends PageTransitionsBuilder {
+class RotationFadeTransitionBuilder extends PageTransitionsBuilder {
 
-  const CustomPageTransitionsBuilder();
+  const RotationFadeTransitionBuilder();
 
   @override
   Widget buildTransitions<T>(
@@ -12,13 +12,13 @@ class CustomPageTransitionsBuilder extends PageTransitionsBuilder {
       Animation<double> secondaryAnimation,
       Widget child,
       ) {
-    return _CustomPageTransitionsBuilder(routeAnimation: animation, child: child);
+    return _RotationFadeTransitionBuilder(routeAnimation: animation, child: child);
   }
 }
 
 
-class _CustomPageTransitionsBuilder extends StatelessWidget {
-  _CustomPageTransitionsBuilder({
+class _RotationFadeTransitionBuilder extends StatelessWidget {
+  _RotationFadeTransitionBuilder({
     Key key,
     @required Animation<double> routeAnimation, // The route's linear 0.0 - 1.0 animation.
     @required this.child,
