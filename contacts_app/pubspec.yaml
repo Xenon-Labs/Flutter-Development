@@ -27,9 +27,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  permission_handler: ^4.0.0
+  permission_handler: ^5.0.0
   contacts_service: ^0.3.10
-  flutter_sms: ^2.0.0
+  flutter_sms: 2.0.0
   url_launcher: ^5.4.2
 
 
