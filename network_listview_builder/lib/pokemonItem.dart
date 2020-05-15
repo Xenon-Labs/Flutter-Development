@@ -48,10 +48,6 @@ class _PokemonItemState extends State<PokemonItem> {
               ))
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Divider(),
-          )
         ],
       ),
     );

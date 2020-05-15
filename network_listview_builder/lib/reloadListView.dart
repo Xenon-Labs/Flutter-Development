@@ -52,7 +52,11 @@ class _ReloadListViewState extends State<ReloadListView> {
                             }
                             return false;
                           },
-                          child: ListView.builder(
+                          child: ListView.separated(
+                              separatorBuilder: (context, index) => Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Divider(),
+                                  ),
                               padding: EdgeInsets.only(top: 20),
                               physics: const AlwaysScrollableScrollPhysics(),
                               itemCount: value.length,
