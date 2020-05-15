@@ -56,7 +56,6 @@ class _ReloadListViewState extends State<ReloadListView> {
                               padding: EdgeInsets.only(top: 20),
                               physics: const AlwaysScrollableScrollPhysics(),
                               itemCount: value.length,
-                              //Builds only 5 at a time
                               cacheExtent: 5,
                               itemBuilder: (BuildContext context, int index) {
                                 return PokemonItem(pokemon: value[index]);

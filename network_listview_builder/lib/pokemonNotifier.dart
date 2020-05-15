@@ -41,7 +41,6 @@ class PokemonNotifier extends ValueNotifier<List<Pokemon>> {
 
       dynamic jsonDecoded = json.decode(res.body);
 
-      //todo test
       if (jsonDecoded != null) {
         _listPokemons.add(Pokemon.fromJson(jsonDecoded));
       } else {
