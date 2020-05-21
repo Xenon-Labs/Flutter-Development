@@ -11,6 +11,7 @@ class PokemonNotifier extends ValueNotifier<List<Pokemon>> {
   int _batchesOf = 5;
   final String _apiUrl = 'https://pokeapi.co/api/v2/pokemon/';
   List<Pokemon> _listPokemons;
+  bool _loading = false;
 
   @override
   List<Pokemon> get value => _value;
@@ -28,28 +29,26 @@ class PokemonNotifier extends ValueNotifier<List<Pokemon>> {
   }
 
   Future<void> getMore() async {
-    if (_hasMorePokemon) {
+    if (_hasMorePokemon && !_loading) {
+      _loading = true;
       await httpGetPokemon(_pageNumber);
+      _loading = false;
     }
   }
 
   Future<void> httpGetPokemon(int page) async {
     _listPokemons ??= <Pokemon>[];
-
-    for (var i = 0; i < _batchesOf; i++) {
-      http.Response res = await http.get(_apiUrl + (page + i).toString());
-
+    int pageNumber = page;
+    while (_hasMorePokemon && (pageNumber - page) < _batchesOf) {
+      http.Response res = await http.get(_apiUrl + (pageNumber).toString());
       Map<String, dynamic> jsonDecoded = json.decode(res.body);
-
-      if (jsonDecoded != null) {
-        _listPokemons.add(Pokemon.fromJson(jsonDecoded));
-      } else {
-        _hasMorePokemon = false;
-        break;
-      }
+      jsonDecoded != null
+          ? _listPokemons.add(Pokemon.fromJson(jsonDecoded))
+          : _hasMorePokemon = false;
+      pageNumber++;
     }
-    _pageNumber += _batchesOf;
 
+    _pageNumber = pageNumber;
     value = _listPokemons;
   }
 }
