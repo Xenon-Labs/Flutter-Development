@@ -1,62 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:network_listview_builder/pokemonModel.dart';
 
-class PokemonItem extends StatefulWidget {
+class PokemonItem extends StatelessWidget {
   PokemonItem({Key key, @required this.pokemon}) : super(key: key);
 
   final Pokemon pokemon;
 
   @override
-  _PokemonItemState createState() => _PokemonItemState();
-}
-
-class _PokemonItemState extends State<PokemonItem> {
-  @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(widget.pokemon.name,
-                            style: TextStyle(fontSize: 18))
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text('height: ' + widget.pokemon.height.toString())
-                      ],
-                    ),
-                    getAbilitiesRow(),
-                    getStatsRows(),
-                  ],
-                ),
-              ),
-              Expanded(
-                  child: Column(
-                children: <Widget>[
-                  Center(
-                    child: Image.network(widget.pokemon.defaultImage),
-                  )
-                ],
-              ))
-            ],
-          ),
-        ],
-      ),
+      child: Row(children: <Widget>[
+        Flexible(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                getPokemonName(),
+                getPokemonHeight(),
+                getAbilitiesRow(),
+                getStatsRows()
+              ]),
+        ),
+        Column(children: <Widget>[
+          Center(
+            child: Image.network(pokemon.defaultImage),
+          )
+        ]),
+      ]),
+    );
+  }
+
+  Widget getPokemonName() {
+    return Row(
+      children: <Widget>[
+        Text(pokemon.name, style: TextStyle(fontSize: 18)),
+      ],
+    );
+  }
+
+  Widget getPokemonHeight() {
+    return Row(
+      children: <Widget>[
+        Text('height: ' + pokemon.height.toString()),
+      ],
     );
   }
 
   Widget getStatsRows() {
     List<Widget> statWidgets = <Widget>[];
 
-    for (Map<String, dynamic> stats in widget.pokemon.stats) {
+    for (Map<String, dynamic> stats in pokemon.stats) {
       statWidgets.add(Row(
         children: <Widget>[
           Text(stats['stat']['name'] + ": " + stats['base_stat'].toString()),
@@ -70,7 +63,7 @@ class _PokemonItemState extends State<PokemonItem> {
   Widget getAbilitiesRow() {
     String abilitiesString = '';
 
-    for (Map<String, dynamic> abilities in widget.pokemon.abilities) {
+    for (Map<String, dynamic> abilities in pokemon.abilities) {
       abilitiesString = abilitiesString + abilities['ability']['name'] + ', ';
     }
     abilitiesString = abilitiesString.substring(0, abilitiesString.length - 2);

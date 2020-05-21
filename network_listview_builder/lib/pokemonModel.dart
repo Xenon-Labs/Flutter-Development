@@ -7,7 +7,7 @@ class Pokemon {
       this.stats,
       this.defaultImage});
 
-  factory Pokemon.fromJson(Map<dynamic, dynamic> json) {
+  factory Pokemon.fromJson(Map<String, dynamic> json) {
     return Pokemon(
         id: json['id'],
         name: json['name'],

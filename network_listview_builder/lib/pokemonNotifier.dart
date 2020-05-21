@@ -39,7 +39,7 @@ class PokemonNotifier extends ValueNotifier<List<Pokemon>> {
     for (var i = 0; i < _batchesOf; i++) {
       http.Response res = await http.get(_apiUrl + (page + i).toString());
 
-      dynamic jsonDecoded = json.decode(res.body);
+      Map<String, dynamic> jsonDecoded = json.decode(res.body);
 
       if (jsonDecoded != null) {
         _listPokemons.add(Pokemon.fromJson(jsonDecoded));

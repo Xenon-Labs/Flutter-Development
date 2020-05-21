@@ -10,9 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Network ListView Builder',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: ThemeData(),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Pokemon'),
     );
   }
