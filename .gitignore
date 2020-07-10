@@ -37,3 +37,4 @@ lib/generated_plugin_registrant.dart
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 todo_app_firebase/android/app/google-services.json
 todo_app_firebase/ios/Runner/GoogleService-Info.plist
+chat_app/android/app/google-services.json
