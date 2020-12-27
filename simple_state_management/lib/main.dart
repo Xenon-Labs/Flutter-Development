@@ -13,25 +13,22 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<CounterNotifier>(
       create: (BuildContext context) => CounterNotifier(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Simple State Management',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MyHomePage(title: 'Simple State Management'),
+        home: MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text('My Home Page'),
         actions: <Widget>[
           FlatButton(
             onPressed: () {
@@ -58,7 +55,6 @@ class MyHomePage extends StatelessWidget {
 }
 
 class SecondPage extends StatelessWidget {
-  SecondPage({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
