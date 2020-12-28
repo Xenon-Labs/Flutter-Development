@@ -1,11 +1,11 @@
 import 'package:chat_app/models/convo.dart';
 import 'package:chat_app/models/user.dart';
+import 'package:chat_app/providers/newMessageProvider.dart';
 import 'package:chat_app/screens/messaging/widgets/convoWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:chat_app/services/authentication.dart';
 import 'package:provider/provider.dart';
-import 'package:chat_app/providers/newMessageProvider.dart';
 
 class HomeBuilder extends StatelessWidget {
   @override
