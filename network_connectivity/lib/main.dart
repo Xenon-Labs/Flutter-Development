@@ -1,3 +1,5 @@
+import 'package:app_settings/app_settings.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:network_connectivity/connectivityChangeNotifier.dart';
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
           ConnectivityChangeNotifier changeNotifier =
               ConnectivityChangeNotifier();
           //Inital load is an async function, can use FutureBuilder to show loading
-          //screen while this function complete. This is not covered in this tutorial
+          //screen while this function running. This is not covered in this tutorial
           changeNotifier.initialLoad();
           return changeNotifier;
         },
@@ -39,34 +41,43 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          brightness: Brightness.light),
-      body: Consumer<ConnectivityChangeNotifier>(builder: (BuildContext context,
-          ConnectivityChangeNotifier connectivityChangeNotifier, Widget child) {
-        return Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Flexible(
-                  child: SvgPicture.asset(connectivityChangeNotifier.svgUrl,
-                      fit: BoxFit.contain)),
-              Flexible(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(30.0, 20, 30, 100),
-                  child: Text(
-                    connectivityChangeNotifier.pageText,
-                    textAlign: TextAlign.center,
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            brightness: Brightness.light),
+        body: Center(
+          child: Consumer<ConnectivityChangeNotifier>(builder:
+              (BuildContext context,
+                  ConnectivityChangeNotifier connectivityChangeNotifier,
+                  Widget child) {
+            return Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Flexible(
+                    child: SvgPicture.asset(connectivityChangeNotifier.svgUrl,
+                        fit: BoxFit.contain)),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(30.0, 20, 30, 100),
+                    child: Text(
+                      connectivityChangeNotifier.pageText,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      }),
-    );
+                if (connectivityChangeNotifier.connectivity !=
+                    ConnectivityResult.wifi)
+                  Flexible(
+                    child: RaisedButton(
+                      child: Text('Open Settings'),
+                      onPressed: () => AppSettings.openAppSettings(),
+                    ),
+                  )
+              ],
+            );
+          }),
+        ));
   }
 }

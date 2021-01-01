@@ -4,7 +4,6 @@ import 'package:connectivity/connectivity.dart';
 class ConnectivityChangeNotifier extends ChangeNotifier {
   ConnectivityChangeNotifier() {
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-      _connectivityResult = result;
       print(result);
       resultHandler(result);
     });
@@ -19,6 +18,7 @@ class ConnectivityChangeNotifier extends ChangeNotifier {
   String get pageText => _pageText;
 
   void resultHandler(ConnectivityResult result) {
+    _connectivityResult = result;
     if (result == ConnectivityResult.none) {
       _svgUrl = 'assets/noWifi.svg';
       _pageText =
@@ -26,7 +26,7 @@ class ConnectivityChangeNotifier extends ChangeNotifier {
     } else if (result == ConnectivityResult.mobile) {
       _svgUrl = 'assets/noWifi.svg';
       _pageText =
-          'Currently connected a celluar network. Please connect to a wifi network!';
+          'Currently connected to a celluar network. Please connect to a wifi network!';
     } else if (result == ConnectivityResult.wifi) {
       _svgUrl = 'assets/connected.svg';
       _pageText = 'Connected to a wifi network!';
