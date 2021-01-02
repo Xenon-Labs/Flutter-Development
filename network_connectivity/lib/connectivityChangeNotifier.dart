@@ -4,12 +4,11 @@ import 'package:connectivity/connectivity.dart';
 class ConnectivityChangeNotifier extends ChangeNotifier {
   ConnectivityChangeNotifier() {
     Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
-      print(result);
       resultHandler(result);
     });
   }
   ConnectivityResult _connectivityResult = ConnectivityResult.none;
-  String _svgUrl = 'assets/noWifi.svg';
+  String _svgUrl = 'assets/serverDown.svg';
   String _pageText =
       'Currently connected to no network. Please connect to a wifi network!';
 
@@ -20,7 +19,7 @@ class ConnectivityChangeNotifier extends ChangeNotifier {
   void resultHandler(ConnectivityResult result) {
     _connectivityResult = result;
     if (result == ConnectivityResult.none) {
-      _svgUrl = 'assets/noWifi.svg';
+      _svgUrl = 'assets/serverDown.svg';
       _pageText =
           'Currently connected to no network. Please connect to a wifi network!';
     } else if (result == ConnectivityResult.mobile) {
